@@ -76,9 +76,9 @@ function initApp(){
   gui.position.set( -0.5, 0, 0 );
 
   gui.add(settings, 'speed')
-  gui.add(settings, 'friction')
+  let g = gui.add(settings, 'friction')
   controllers[0].add( gui );
-
+  gui.remove( g )
   dat.enableMouse( camera );
 }
 

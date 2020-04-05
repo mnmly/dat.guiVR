@@ -383,6 +383,52 @@ const GUIVR = (function DATGUIVR(){
   }
 
 
+   /*
+   // https://github.com/dataarts/dat.guiVR/blob/f505b344c63c33614df9abd3cc61b370ac14909d/modules/datguivr/index.js
+  Not used directly; used by folders.
+  Remove controllers from the global list of all controllers known to dat.GUIVR.
+  Calls removeTest first to check input arguments.  returns false if this test fails.
+  returns true if successful.
+  Note that this function does not recursively remove elements from folders; that is dealt with in the folder code which calls this.
+  
+   */
+  function remove( ...args ){
+    let argSet = [ ...new Set(args) ]; //just in case there were repeated elements in args, turn into Set then back to array.
+    if ( !removeTest(...argSet) ) return false;
+    argSet.forEach( function( obj ){
+      var i = controllers.indexOf( obj );
+      if ( i > -1) controllers.splice( i, 1 );
+      else { // I can't see how this'd happen now we guard against repeated elements.
+        console.log("Internal error in remove, not anticipated by removeTest. Internal dat.GUIVR state may be inconsistent.");
+        return false;
+      }
+    });
+    return true;
+  }
+
+  /*
+  Verify that all of the items in provided arguments are existing controllers that should be ok to remove.
+  Returns false if there are any mismatches, true if believed ok to continue with actual remove()
+  If any of the provided args are folders (have isFolder property) this is called recursively.
+  This will result in redundant work as each folder will also call it again as it's removed, but this is cheap
+  and it means that any error should be caught as early as possible and the whole process aborted.
+  */
+  function removeTest( ...args ) {
+    for (var i=0; i<args.length; i++) {
+      var obj = args[i];
+      if (controllers.indexOf(obj) === -1 || !obj.folder.hasChild(obj)) {
+        //TODO: toString implementations for controllers
+        console.log("Can't remove controller " + obj); //not sure the preferred way of reporting problem to user.
+        return false;
+      }
+      if (obj.isFolder) {
+        if (!removeTest( ...obj.guiChildren )) return false;
+      }
+    }
+    return true;
+  }
+
+
   /*
     Creates a folder with the name.
 
@@ -398,6 +444,7 @@ const GUIVR = (function DATGUIVR(){
       textCreator,
       name,
       guiAdd: add,
+      guiRemove: remove,
       addSlider: addSimpleSlider,
       addDropdown: addSimpleDropdown,
       addCheckbox: addSimpleCheckbox,
