@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "array-shuffle": "^1.0.1",
-    "inherits": "^2.0.1",
+    "inherits": "^2.0.4",
     "layout-bmfont-text": "^1.2.0",
     "nice-color-palettes": "^1.0.1",
     "object-assign": "^4.0.1",

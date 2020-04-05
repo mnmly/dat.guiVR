@@ -19,6 +19,7 @@
 
 import * as SharedMaterials from './sharedmaterials';
 import * as Colors from './colors';
+import * as THREE from 'three'
 
 export function alignLeft( obj ){
   if( obj instanceof THREE.Mesh ){

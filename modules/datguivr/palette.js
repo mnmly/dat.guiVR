@@ -18,6 +18,7 @@
 */
 
 import createInteraction from './interaction';
+import * as THREE from 'three'
 
 export function create( { group, panel } = {} ){
 

@@ -1,5 +1,4 @@
 import * as THREE from 'three'
-window.THREE = THREE;
 import { dat } from './modules/datguivr/index'
 import VRButton from './modules/thirdparty/VRButton'
 
