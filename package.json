@@ -9,6 +9,7 @@
     "start": "parcel index-dev.html --port 9966"
   },
   "dependencies": {
+    "layout-bmfont-text": "^1.3.4",
     "parse-bmfont-ascii": "^1.0.6",
     "three": "^0.115.0"
   },
