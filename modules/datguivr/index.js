@@ -24,6 +24,7 @@ import createButton from './button';
 import createFolder from './folder';
 import createDropdown from './dropdown';
 import * as SDFText from './sdftext';
+import * as THREE from 'three'
 
 const GUIVR = (function DATGUIVR(){
 
@@ -423,8 +424,7 @@ const GUIVR = (function DATGUIVR(){
   const tDirection = new THREE.Vector3( 0, 0, -1 );
   const tMatrix = new THREE.Matrix4();
 
-  function update() {
-    requestAnimationFrame( update );
+  function tick() {
 
     var hitscanObjects = getVisibleHitscanObjects();
 
@@ -515,11 +515,6 @@ const GUIVR = (function DATGUIVR(){
     return intersections;
   }
 
-  update();
-
-
-
-
 
   /*
     Public methods.
@@ -529,7 +524,8 @@ const GUIVR = (function DATGUIVR(){
     create,
     addInputObject,
     enableMouse,
-    disableMouse
+    disableMouse,
+    tick,
   };
 
 }());

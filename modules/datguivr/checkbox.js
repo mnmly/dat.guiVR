@@ -24,6 +24,7 @@ import * as Layout from './layout';
 import * as Graphic from './graphic';
 import * as SharedMaterials from './sharedmaterials';
 import * as Grab from './grab';
+import * as THREE from 'three'
 
 export default function createCheckbox( {
   textCreator,

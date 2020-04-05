@@ -25,6 +25,7 @@ import * as Graphic from './graphic';
 import * as SharedMaterials from './sharedmaterials';
 import * as Grab from './grab';
 import * as Palette from './palette';
+import * as THREE from 'three'
 
 export default function createFolder({
   textCreator,

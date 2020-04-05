@@ -24,6 +24,7 @@ import * as Layout from './layout';
 import * as SharedMaterials from './sharedmaterials';
 import * as Grab from './grab';
 import * as Palette from './palette';
+import * as THREE from 'three'
 
 export default function createSlider( {
   textCreator,

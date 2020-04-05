@@ -17,6 +17,7 @@
 * limitations under the License.
 */
 import Emitter from 'events';
+import * as THREE from 'three'
 
 export default function createInteraction( hitVolume ){
   const events = new Emitter();
