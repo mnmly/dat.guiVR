@@ -460,7 +460,14 @@ const GUIVR = (function DATGUIVR(){
   }
 
 
-
+  /**
+   * Exposes input objects
+   * 
+   * @returns {Array<InputObject>}
+   */
+  function getInputObjects() {
+    return inputObjects;
+  }
 
 
   /*
@@ -573,6 +580,7 @@ const GUIVR = (function DATGUIVR(){
     enableMouse,
     disableMouse,
     tick,
+    getInputObjects
   };
 
 }());
