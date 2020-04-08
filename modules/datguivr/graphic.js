@@ -7,8 +7,7 @@ export const grabBar = (function(){
   const texture = new THREE.Texture();
   texture.image = image;
   texture.needsUpdate = true;
-  // texture.minFilter = THREE.LinearMipMapLinearFilter;
-  // texture.magFilter = THREE.LinearFilter;
+  // texture.minFilter = THREE.LinearMipMapLinearFilter; // texture.magFilter = THREE.LinearFilter;
   // texture.generateMipmaps = false;
 
   const material = new THREE.MeshBasicMaterial({
@@ -19,12 +18,13 @@ export const grabBar = (function(){
   });
   material.alphaTest = 0.5;
 
-  return function(){
-    const geometry = new THREE.PlaneGeometry( 64 / 1000, 32 / 1000, 1, 1 );
-    // let mat = new THREE.MeshBasicMaterial( { color: 0xffff0000 } )
+  let g = new THREE.Group()
+  image.onload = () => {
+    const geometry = new THREE.PlaneGeometry( image.naturalWidth / 1000, image.naturalHeight / 1000, 1, 1 );
     const mesh = new THREE.Mesh( geometry, material );
-    return mesh;
+    g.add( mesh )
   }
+  return () => g
 
 }());
 
@@ -47,13 +47,14 @@ export const downArrow = (function(){
     map: texture
   });
   material.alphaTest = 0.2;
-
-  return function(){
+  let g = new THREE.Group()
+  image.onload = () => {
     const h = 0.3;
-    const geo = new THREE.PlaneGeometry( image.width / 1000 * h, image.height / 1000 * h, 1, 1 );
+    const geo = new THREE.PlaneGeometry( image.naturalWidth / 1000 * h, image.naturalHeight / 1000 * h, 1, 1 );
     geo.translate( -0.005, -0.004, 0 );
-    return new THREE.Mesh( geo, material );
+    g.add(new THREE.Mesh( geo, material ));
   }
+  return () => g
 }());
 
 
@@ -76,11 +77,12 @@ export const checkmark = (function(){
     map: texture
   });
   material.alphaTest = 0.2;
-
-  return function(){
+  let g = new THREE.Group()
+  image.onload = () => {
     const h = 0.4;
-    const geo = new THREE.PlaneGeometry( image.width / 1000 * h, image.height / 1000 * h, 1, 1 );
+    const geo = new THREE.PlaneGeometry( image.naturalWidth / 1000 * h, image.naturalHeight / 1000 * h, 1, 1 );
     geo.translate( 0.025, 0, 0 );
-    return new THREE.Mesh( geo, material );
+    g.add( new THREE.Mesh( geo, material ) )
   }
+  return () => g
 }());
