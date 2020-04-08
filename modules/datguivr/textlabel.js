@@ -19,6 +19,7 @@
 
 import * as Colors from './colors';
 import * as SharedMaterials from './sharedmaterials';
+import * as THREE from 'three'
 
 export default function createTextLabel( textCreator, str, width = 0.4, depth = 0.029, fgColor = 0xffffff, bgColor = Colors.DEFAULT_BACK, scale = 1.0 ){
 
